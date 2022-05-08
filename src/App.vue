@@ -15,14 +15,25 @@
 	<h1 style="font-size: 10px" v-bind:style="{color: 'red',fontSize:'60px'}">Diretiva v-bind</h1>
 	<!--o style també pode ser chamado uma propriedade dentro de um array:-->
 	<h1  v-bind:style="[color, fontSize]">Diretiva v-bind2</h1> <!--declarando em data()-->
+
+	<!--Trabalhando com PROPS=> são passagens de dados passando valor de pai para filho-->
+	<Title titulo="Título1" /> <!--para serem renderizados na classe pai(App.vue), usamos a
+	propriedade props export default da classe filho(Title.vue)-->
+	<!--por default, o props passa uma string , e se quisermos passar um objeto, array, number..etc,
+	temos que colocar o v-bind na propriedade do HTML-->
+	<Title v-bind:titulo="2" />
+
+	<Title subtitulo="subtitulo" />
 </div>
 </template>
 
 <script>
-
+import Title from './Title.vue';
 export default {
 name:'App',
-components:{},
+components:{
+	Title,
+},
 data() {
 return{
 mostrar:false,
