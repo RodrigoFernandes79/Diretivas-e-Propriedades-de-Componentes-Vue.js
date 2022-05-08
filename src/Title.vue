@@ -1,11 +1,9 @@
 <template>
-<div>
+
 	<!--no v-bind="$attrs",todos os atributos HTML da classe pai(ex: <div></div>),sairao
 da classe pai e passarao para onde colocamos o v-bind(no caso no h1). com exceções de
 class e style-->
-	<h1 v-bind="$attrs">{{titulo}}</h1>
-	<h1 v-bind="$attrs">{{ subtitulo }}</h1>
-</div>
+	<h1 >{{titulo}}</h1>
 
 </template>
 

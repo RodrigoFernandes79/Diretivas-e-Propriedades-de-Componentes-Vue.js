@@ -24,24 +24,58 @@
 	<Title v-bind:titulo="2" />
 
 	<Title subtitulo="subtitulo" />
+
+	<!--diretiva v-for-->
+	<ul>
+		<li v-for="(item,index) of todos" :key="index" >{{ item }}</li>
+
+	</ul>
+	<!--endendendo como funciona o v-for em array de objetos: o primeiro parametro é o valor,
+	o segundo é a chave e o terceiro é o index(a posição do array)-->
+	<ul>
+		<li v-for="(valor,chave,index) of todos" :key="index">
+			{{chave}} : {{valor}} => {{index}}
+			</li>
+	</ul>
+	<!--renderizando o listItem.vue-->
+	<ul>
+		<ListItem v-for="(item,index) in lista" :key="index" :item="item" />
+	</ul>
 </div>
 </template>
 
 <script>
 import Title from './Title.vue';
+import ListItem from './ListItem.vue';
 export default {
 name:'App',
 components:{
-	Title,
+	//Title,
+	ListItem,
 },
 data() {
 return{
+	//diretivas v-if e vshow:
 mostrar:false,
+//diretivas v-else-if e v-else:
 state:'completed',
 message:'hello:world',
+//diretiva v-bind:
 url:'www.google.com',
 color:{color:'red'},
 fontSize:{fontSize:'60px'},
+//diretiva v-for:
+todos: {
+	item1:'Item 1',
+	item2:'Item 2',
+	item3:'Item 3',
+},
+lista:[
+	{label:'item',value:1},
+	{label:'hello',value:'world'},
+	{label:'Harry',value:'Potter'},
+]
+
 };
 }
 }
