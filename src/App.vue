@@ -41,6 +41,21 @@
 	<ul>
 		<ListItem v-for="(item,index) in lista" :key="index" :item="item" />
 	</ul>
+
+	<!--TRABALHANDO COM V-ON:	são DIRETIVAS DE MODIFICADORES DE ACESSO COMO O @click , 	NA VERDADE
+	O V-ON PODE SER SUBSTITUIDO PELO CARACTERE @-->
+	<button @click="count1++">Click1 {{count1}}</button>
+	<button @click="increment">Click2 {{count2}}</button>
+	<button @click="increment2(2)">Click3 {{count3}}</button>
+<!-- DIRETIVA V-ON COM $EVENT. O $EVENT AO SER ACIONADO, ELE REALIZA UM EVENTO QUE FOI DETERMINADO
+PARA ELE-->
+<input type="text" @input="say('hello',$event)"> <!--QUANDO FOR INSERIDO UM TEXTO NO INPUT, ELE
+VAI REALIZAR UM EVENTO(MOSTRARÁ UMA MENSAGEM DE HELLO-->
+
+
+<!--EVENTO CUSTOMIZADO: PASSANDO O EVENTO DA CLASSE FILHO(LISTITEM.VUE) PARA SEREM RENDERIZADOS
+NA CLASSE PAI(APP.VUE)-->
+<ListItem @customEvent="increment3" />{{ count1 }}
 </div>
 </template>
 
@@ -74,9 +89,31 @@ lista:[
 	{label:'item',value:1},
 	{label:'hello',value:'world'},
 	{label:'Harry',value:'Potter'},
-]
-
+],
+//DIRETIVA V-ON NO BUTTON:
+count1:0,
+count2:0,
+count3:0,
 };
+},
+//CRIANDO OS MÉTODOS DA DIRETIVA V-ON NO BUTTON:
+methods:{
+increment(){
+	this.count2++;
+},
+increment2(quantidade){
+	this.count3+=quantidade;
+},
+//CRIANDO O MÉTODO DO INPUT COM $EVENT:
+say(word,event){
+	alert(word,event);
+},
+//CRIANDO O MÉTODO INCREMENT3 PARA EVENTO CUSTOMIZADO(CLASSE FILHO->PAI)
+increment3(parametro2, parametro3){ // passando o parametro2 da classe filho para customizar o evento
+this.count1+=parametro2;
+alert('hello',parametro3)//passando o parametro 3 como evento ao clicar no mouse ele mostra a
+//mensagem 'hello'
+},
 }
 }
 </script>
