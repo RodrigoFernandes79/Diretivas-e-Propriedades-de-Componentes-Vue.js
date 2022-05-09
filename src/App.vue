@@ -56,6 +56,11 @@ VAI REALIZAR UM EVENTO(MOSTRARÁ UMA MENSAGEM DE HELLO-->
 <!--EVENTO CUSTOMIZADO: PASSANDO O EVENTO DA CLASSE FILHO(LISTITEM.VUE) PARA SEREM RENDERIZADOS
 NA CLASSE PAI(APP.VUE)-->
 <ListItem @customEvent="increment3" />{{ count1 }}
+
+<!--TRABALHANDO COM TWO WAY DATABINDING USANDO O V-MODEL-->
+<input type="text" v-model="text" >{{text}}
+<!--V-MODEL SERVE PRA QUALQUER INPUT COMO POR EXEMPLO O CHECKBOX-->
+<input type="checkbox" v-model="text">{{text}}
 </div>
 </template>
 
@@ -66,7 +71,7 @@ export default {
 name:'App',
 components:{
 	//Title,
-	ListItem,
+//ListItem,
 },
 data() {
 return{
@@ -94,6 +99,9 @@ lista:[
 count1:0,
 count2:0,
 count3:0,
+
+//DIRETIVA V-MODEL NO INPUT TEXT:
+text:'',
 };
 },
 //CRIANDO OS MÉTODOS DA DIRETIVA V-ON NO BUTTON:
